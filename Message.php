@@ -243,7 +243,8 @@ class Message extends BaseMessage {
     * @inheritdoc
     */
     public function toString() {
-        return implode(',', $this->getTo()) . "\n"
+        $to = is_string($this->getTo()) ? $this->getTo() : implode(',',$this->getTo());
+        return $to . "\n"
             . $this->getSubject() . "\n"
             . $this->getTextBody();
     }
